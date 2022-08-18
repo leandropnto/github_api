@@ -1,13 +1,12 @@
 defmodule GithubApi.Git.Client do
   use Tesla
   plug Tesla.Middleware.JSON
-  @base_url "https://api.github.com/users/"
+  @base_url "https://api.github.com/"
 
   alias Tesla.Env
 
-  def get_repos(user) do
-    url = "#{@base_url}#{user}/repos"
-
+  def get_repos(url \\ @base_url, user) do
+    url = "#{url}users/#{user}/repos"
     get(url)
     |> handle_get()
   end
@@ -19,6 +18,11 @@ defmodule GithubApi.Git.Client do
   defp handle_get({:ok, %Env{status: 200, body: body}}) do
     IO.inspect(body)
     {:ok, Enum.map(body, &map_item/1)}
+  end
+
+  defp handle_get({:ok, %Env{status: 500, body: body}}) do
+    IO.inspect(body)
+    {:error, :server_error}
   end
 
   defp map_item(%{

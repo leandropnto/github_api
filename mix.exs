@@ -48,8 +48,11 @@ defmodule GithubApi.MixProject do
       {:tesla, "~> 1.4"},
 
       # optional, but recommended adapter
-      {:hackney, "~> 1.17"}
+      {:hackney, "~> 1.17"},
 
+      # teste 
+      {:bypass, "~> 2.1", only: :test},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
