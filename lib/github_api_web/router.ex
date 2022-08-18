@@ -7,6 +7,8 @@ defmodule GithubApiWeb.Router do
 
   scope "/api", GithubApiWeb do
     pipe_through :api
+
+    get "/:repo", GitController, :index
   end
 
   # Enables LiveDashboard only for development

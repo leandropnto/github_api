@@ -10,6 +10,11 @@ import Config
 config :github_api,
   ecto_repos: [GithubApi.Repo]
 
+
+# Configuração da lib TESLA para request HTTP
+config :tesla, adapter: Tesla.Adapter.Hackney
+
+
 # Configures the endpoint
 config :github_api, GithubApiWeb.Endpoint,
   url: [host: "localhost"],
