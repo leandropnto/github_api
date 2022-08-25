@@ -54,3 +54,7 @@ import_config "#{config_env()}.exs"
 config :github_api, GithubApiWeb.Auth.Guardian,
   issuer: "github_api",
   secret_key: "t8QWNl7nfkmEx3bXBpUNe7jJdxdoVqsVKwSMFywe8Tr6rdHaL01cugKonDnuKVHN"
+
+config :github_api, GithubApiWeb.Auth.Pipeline,
+  module: GithubApiWeb.Auth.Guardian,
+  error_handler: GithubApiWeb.Auth.ErrorHandler
