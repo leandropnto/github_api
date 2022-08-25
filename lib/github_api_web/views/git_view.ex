@@ -12,4 +12,8 @@ defmodule GithubApiWeb.GitView do
   def render("notfound.json", %{query: query}) do
     %{message: "Repo not found", status: 404, query: query}
   end
+
+  def render("unauthorized.json", %{query: query}) do
+    %{message: "Invalid credentials", status: 401, query: query}
+  end
 end

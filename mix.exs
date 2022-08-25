@@ -44,7 +44,6 @@ defmodule GithubApi.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-
       {:tesla, "~> 1.4"},
 
       # optional, but recommended adapter
@@ -52,7 +51,13 @@ defmodule GithubApi.MixProject do
 
       # teste 
       {:bypass, "~> 2.1", only: :test},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+
+      # lib para autenticação e autorização jwt
+      {:guardian, "~> 2.0"},
+
+      # hash 
+      {:pbkdf2_elixir, "~> 2.0"}
     ]
   end
 

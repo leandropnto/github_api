@@ -10,10 +10,13 @@ import Config
 config :github_api,
   ecto_repos: [GithubApi.Repo]
 
+# configuracao do banco para chave primaria e estrangeira
+config :github_api, GithubApi.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
 
 # Configuração da lib TESLA para request HTTP
 config :tesla, adapter: Tesla.Adapter.Hackney
-
 
 # Configures the endpoint
 config :github_api, GithubApiWeb.Endpoint,
@@ -45,3 +48,9 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# Guardian
+# <- Deve ser o nome do módulo em que estamos configurando
+config :github_api, GithubApiWeb.Auth.Guardian,
+  issuer: "github_api",
+  secret_key: "t8QWNl7nfkmEx3bXBpUNe7jJdxdoVqsVKwSMFywe8Tr6rdHaL01cugKonDnuKVHN"
